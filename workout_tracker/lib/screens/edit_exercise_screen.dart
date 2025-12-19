@@ -60,7 +60,7 @@ class _EditExerciseScreenState extends State<EditExerciseScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(isEditing ? 'Edit Exercise' : 'Add Exercise')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 40),
         child: Column(
           children: [
             TextField(

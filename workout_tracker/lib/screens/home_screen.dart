@@ -50,7 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       exercise.sets[index].completed = !exercise.sets[index].completed;
       exercise.lastUpdated = DateTime.now();
-      exercise.updateHistoryIfCompleted(); // 🆕 record completion if all sets done
+      exercise
+          .updateHistoryIfCompleted(); // 🆕 record completion if all sets done
     });
     _saveExercises();
   }
@@ -78,12 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
       body: exercises.isEmpty
           ? const Center(child: Text('No exercises yet. Tap + to add one!'))
           : ListView.builder(
+              padding: const EdgeInsets.fromLTRB(5, 5, 5, 100),
               itemCount: exercises.length,
               itemBuilder: (context, i) {
                 final e = exercises[i];
                 return Card(
                   margin: const EdgeInsets.symmetric(
-                      horizontal: 12, vertical: 6),
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   child: ExpansionTile(
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           e.name,
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
                         const SizedBox(height: 5),
                         LinearProgressIndicator(
@@ -132,17 +138,20 @@ class _HomeScreenState extends State<HomeScreen> {
                               const Text(
                                 '🏁 Workout History:',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black54),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54,
+                                ),
                               ),
                               Wrap(
                                 spacing: 6,
                                 runSpacing: 4,
                                 children: e.history.reversed
-                                    .map((d) => Chip(
-                                          label: Text(d),
-                                          backgroundColor: Colors.green[100],
-                                        ))
+                                    .map(
+                                      (d) => Chip(
+                                        label: Text(d),
+                                        backgroundColor: Colors.green[100],
+                                      ),
+                                    )
                                     .toList(),
                               ),
                             ],
